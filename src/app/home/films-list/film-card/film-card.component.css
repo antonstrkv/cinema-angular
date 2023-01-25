@@ -1,0 +1,17 @@
+.example-card {
+  max-width: 350px;
+  margin: 15px;
+  height: 453px;
+}
+
+mat-card-content p {
+  margin-top: 10px;
+}
+
+.readMore_button {
+  margin-left: auto;
+}
+
+mat-card-actions {
+  margin-top: auto;
+}

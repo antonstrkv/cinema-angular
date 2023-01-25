@@ -1,0 +1,22 @@
+.card_container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.demo-paginator {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 1px 2px 0px rgba(66, 68, 90, 1);
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 4px));
+  background-color: var(--mdc-elevated-card-container-color, transparent);
+  border-color: var(--mdc-elevated-card-container-color, transparent);
+}

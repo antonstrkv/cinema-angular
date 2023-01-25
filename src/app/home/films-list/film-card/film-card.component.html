@@ -1,0 +1,47 @@
+<mat-card class="example-card">
+  <img
+    mat-card-image
+    src="https://image.tmdb.org/t/p/w500{{ film.backdrop_path }}"
+    alt="Photo"
+  />
+  <mat-card-header>
+    <mat-card-title
+      >{{ film.original_title.substring(0, 61) }}...</mat-card-title
+    >
+    <mat-card-subtitle>Rating: {{ film.vote_average }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ film.overview.substring(0, 150) }}...</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="onChangeFavorite()"
+      mat-icon-button
+      [color]="
+        ((filmsService.favoriteList$ | async) || [] | isSavedFavorite : film)
+          ? 'warn'
+          : 'basic'
+      "
+      aria-label="Example icon button with a heart icon"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button
+      (click)="onChangeToRead()"
+      mat-icon-button
+      [color]="
+        ((filmsService.toReadList$ | async) || [] | isSavedToRead : film)
+          ? 'primary'
+          : 'basic'
+      "
+      aria-label="Example icon button with a heart icon"
+    >
+      <mat-icon>library_add</mat-icon>
+    </button>
+
+    <button mat-button extended color="primary" class="readMore_button">
+      Read more
+    </button>
+  </mat-card-actions>
+</mat-card>

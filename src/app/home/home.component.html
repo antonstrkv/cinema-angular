@@ -1,0 +1,17 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-filters></app-filters>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <button mat-button extended color="primary" (click)="drawer.toggle()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="arrow icon"
+        [fontIcon]="drawer.opened ? 'arrow_back' : 'arrow_forward'"
+      ></mat-icon>
+      Filters
+    </button>
+  </div>
+
+  <app-films-list></app-films-list>
+</mat-drawer-container>

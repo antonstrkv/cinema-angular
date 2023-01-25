@@ -1,0 +1,13 @@
+.buttons{
+  margin-top: 10px;
+}
+
+.buttons button{
+  margin-right: 5px;
+}
+
+mat-chip-option {
+  display: inline-block;
+  padding: 3px;
+  max-width: max-content;
+}

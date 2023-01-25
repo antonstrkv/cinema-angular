@@ -1,0 +1,69 @@
+<div *ngIf="isLoading" class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+<form
+  [formGroup]="AuthForm"
+  (ngSubmit)="onSubmit()"
+  *ngIf="!isLoading"
+  class="form"
+>
+  <mat-form-field class="email-field">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="emailFormControl"
+      placeholder="Ex. pat@example.com"
+    />
+    <mat-error
+      *ngIf="
+        AuthForm.controls['emailFormControl'].hasError('email') &&
+        !AuthForm.controls['emailFormControl'].hasError('required')
+      "
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error
+      *ngIf="AuthForm.controls['emailFormControl'].hasError('required')"
+    >
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="passwort-field">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="passwordFormControl"
+      placeholder="******"
+    />
+    <mat-error
+      *ngIf="AuthForm.controls['passwordFormControl'].hasError('required')"
+    >
+      Password is <strong>required</strong>
+    </mat-error>
+    <mat-error
+      *ngIf="AuthForm.controls['passwordFormControl'].hasError('minlength')"
+    >
+      Password must be at least <strong>6 characters</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    [disabled]="!AuthForm.valid"
+  >
+    {{ isLoginMode ? "Login" : "Sign Up" }}
+  </button>
+  <button
+    mat-stroked-button
+    (click)="onSwitchMode()"
+    type="button"
+    color="primary"
+  >
+    Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+  </button>
+</form>

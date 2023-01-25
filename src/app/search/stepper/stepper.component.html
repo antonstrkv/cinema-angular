@@ -1,0 +1,74 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Rating is required.">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Film rating</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Select film rating</mat-label>
+        <mat-select
+          disableRipple
+          formControlName="firstCtrl"
+          (selectionChange)="onChangeRating()"
+        >
+          <mat-option value="High">High</mat-option>
+          <mat-option value="Low">Low</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step
+    [stepControl]="secondFormGroup"
+    errorMessage="Popularity is required."
+  >
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Film popularity</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Select film popularity</mat-label>
+        <mat-select
+          disableRipple
+          formControlName="secondCtrl"
+          (selectionChange)="onChangePopularity()"
+        >
+          <mat-option value="Popularity">Popular</mat-option>
+          <mat-option value="Not-popularity">Not popular</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Genres</ng-template>
+    <p>Select film genre.</p>
+    <mat-chip-listbox
+      class="mat-mdc-chip-set-stacked"
+      aria-label="Color selection"
+      multiple
+    >
+      <mat-chip-option
+        *ngFor="let chip of CHECKBOXES"
+        color="primary"
+        (selectionChange)="onChangeActiveGeners(chip.id)"
+      >
+        {{ chip.name }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+    <div class="buttons">
+      <button mat-button matStepperPrevious>Back</button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="searchService.sortSearchPage()"
+        [disabled]="firstFormGroup.invalid || secondFormGroup.invalid"
+      >
+        Search
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>

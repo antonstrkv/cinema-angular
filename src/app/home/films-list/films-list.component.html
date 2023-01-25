@@ -1,0 +1,21 @@
+<mat-paginator
+  class="demo-paginator"
+  (page)="handlePageEvent($event)"
+  [length]="(filmsService.filmsList$ | async)!.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[6, 12, 24, 99]"
+  [pageIndex]="filmsService.pageIndex$ | async"
+  aria-label="Select page"
+>
+</mat-paginator>
+
+<div class="card_container">
+  <app-film-card
+    *ngFor="
+      let filmItem of (filmsService.filmsList$ | async) || []
+        | sort : (filmsService.sortType$ | async)!
+        | page : (filmsService.pageIndex$ | async)! : pageSize
+    "
+    [film]="filmItem"
+  ></app-film-card>
+</div>

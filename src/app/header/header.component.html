@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <a routerLink="">CINEMA TV</a>
+  <div class="example-button-row">
+    <button
+      mat-button
+      routerLink="home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </button>
+    <button
+      mat-button
+      routerLink="search"
+      routerLinkActive="active"
+    >
+      Search
+    </button>
+  </div>
+
+  <span class="example-spacer"></span>
+  <button class="auth" mat-stroked-button routerLink="auth" (click)="logout()">
+    {{ isAuth ? "Logout" : "Login" }}
+  </button>
+</mat-toolbar>

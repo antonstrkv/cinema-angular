@@ -1,0 +1,52 @@
+<mat-form-field appearance="fill" *ngIf="authService.user | async">
+  <mat-label>Select a list</mat-label>
+  <select matNativeControl required (change)="onChangeListToShow($event)">
+    <option #selectSortType value="ALL">All</option>
+    <option value="FAV">Favorite</option>
+    <option value="TO_READ">To read</option>
+  </select>
+</mat-form-field>
+
+<button mat-stroked-button class="Reset" color="warn" (click)="resetFilters()">
+  Reset filters
+</button>
+
+<span>Filters:</span>
+<mat-divider class="divider"></mat-divider>
+
+<mat-form-field appearance="fill">
+  <mat-label>Sort by</mat-label>
+  <select matNativeControl required (change)="onChangeSortType($event)">
+    <option #selectSortType value="SORT_POPULARITY_DESCENDING">
+      Popular descending
+    </option>
+    <option value="SORT_POPULARITY_ASCENDING">Popular ascending</option>
+    <option value="SORT_RATING_DESCENDING">Rating descending</option>
+    <option value="SORT_RATING_ASCENDING">Rating ascending</option>
+  </select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Release year</mat-label>
+  <select matNativeControl required (change)="onChangeReleaseDate($event)">
+    <option #selectReleaseYear value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+  </select>
+</mat-form-field>
+
+<mat-chip-listbox
+  class="mat-mdc-chip-set-stacked"
+  aria-label="Color selection"
+  multiple
+>
+  <mat-chip-option
+    #chip
+    *ngFor="let chip of CHECKBOXES"
+    color="primary"
+    (selectionChange)="onChangeActiveGeners(chip.id)"
+  >
+    {{ chip.name }}
+  </mat-chip-option>
+</mat-chip-listbox>

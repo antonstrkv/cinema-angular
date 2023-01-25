@@ -1,0 +1,25 @@
+button {
+  display: block;
+}
+
+span {
+  font-size: large;
+}
+
+
+mat-chip-option {
+  max-width: 260px;
+}
+
+.divider {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.Reset {
+  margin-left: auto;
+}
